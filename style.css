@@ -1,2 +1,29 @@
 body {
   font-family: "IntelClear", sans-serif}
+
+.pull-left{
+  padding-left: 10px;
+  display: flex;
+  list-style-type: none;
+}
+.nav{
+ margin: 10px;
+}
+.footer{
+  text-align: center;
+}
+.toggle-graphs{
+  width: 10%;
+  border: 1px solid black;
+  list-style-type: none;
+  padding-left: 3px;
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+}
+.graphoptions{
+  margin: 20px;
+  font-size: 10px;
+  padding-left: 0px;
+  margin-left: 0px;
+}
