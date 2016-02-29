@@ -52,10 +52,14 @@ Recommendation
 			§ <name-of-compliance-thing>-app.js
 
 
-
 ---Next Steps:---
 HTML skeleton for all pages first!
 User stories:
 	- As a developer…
 	- As a auditor…
 	- As a organization..
+
+---Rules of engagment:---
+Assets folder contains (/assets/):
+	- Images
+	- Fonts
