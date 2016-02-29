@@ -29,23 +29,26 @@
 // var question3 = new complianceAudit('question19', 'questAnwer19');
 // var question1 = new complianceAudit('question20', 'questAnwer20');
 
-var displayedAllQuestions = document.getElementById('allQuestions');
-
+var answers = {};
 var displayedResults = document.getElementById('question1');
 
 function dataSelected(event){
-  // var chosenField = document.getElementById('question1');
-  var chosenResult = displayedResults.options[displayedResults.selectedIndex].text;
-  console.log(event.target.value);
-  alert(chosenResult);
+  var objKey = event.target.id;
+  answers[objKey] = event.target.value;
+  // // var chosenField = document.getElementById('question1');
+  // var chosenResult = displayedResults.options[displayedResults.selectedIndex].text;
+  // console.log(event.target.value);
+  console.log(answers);
 }
 
-function dataEventListener(){
-  for(var i = 0; i < displayedResults.length; i++){
-    console.log(i);
-    displayedAllQuestions.addEventListener('change', dataSelected);
-  }
-}
-dataEventListener();
+storedData.addEventListener('change', dataSelected);
+//
+// function dataEventListener(){
+//   for(var i = 0; i < displayedResults.length; i++){
+//     console.log(i);
+//     displayedAllQuestions.addEventListener('change', dataSelected);
+//   }
+// }
+// dataEventListener();
 
 //dataSelected();
