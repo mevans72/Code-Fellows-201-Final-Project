@@ -31,6 +31,8 @@ Questionnaire
 		○ This is the page used to manually run the compliance check and takes in input as a form.
 		○ <name-of-compliance-thing>.html
 		○ sans-critical-controls.html
+
+		○ Two graphs. One for Percentage Complete. One for Mandate Controls.
 	- Questionnaire logic
 		○ Charting / graphs.
 			□ chart.js
@@ -43,6 +45,8 @@ Recommendation
 		○ This is the page used to manually run the compliance check and provides recommendations based on the input.
 		○ <name-of-compliance-thing>-recomendation.html
 		○ sans-critical-controls-recomendations.html
+
+		○ One graph and one chart. One graph for Security Posture. One chart for Security Posture.
 	- Questionnaire logic
 		○ Charting / graphs.
 			□ chart.js
