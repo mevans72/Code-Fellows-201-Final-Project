@@ -43,8 +43,8 @@ Questionnaire
 
 Recommendation
 		○ This is the page used to manually run the compliance check and provides recommendations based on the input.
-		○ <name-of-compliance-thing>-recomendation.html
-		○ sans-critical-controls-recomendations.html
+		○ <name-of-compliance-thing>-recommendation.html
+		○ sans-critical-controls-recommendations.html
 
 		○ One graph and one chart. One graph for Security Posture. One chart for Security Posture.
 	- Questionnaire logic
@@ -57,13 +57,16 @@ Recommendation
 
 
 ---Next Steps:---
-HTML skeleton for all pages first!
-User stories:
+More user stories:
 	- As a developer…
 	- As a auditor…
-	- As a organization..
+	- As a organization / client…
 
----Rules of engagment:---
-Assets folder contains (/assets/):
-	- Images
-	- Fonts
+
+---Rules of engagement:---
+Assets folder contains :
+	- Images (/assets/)
+	- Fonts (IntelClear)
+	- Naming schemes:
+			- HTML = kabob-case
+			- JS = camelCase
