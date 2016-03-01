@@ -41,8 +41,10 @@ function countNumOfTotalQuestions() {
 
 function countNumOfQuestionsAnswerd() {
   numOfQuestionsAnswerd = 0;
-  var tempArray = answersConversion();
-  for(var i = 0; i < tempArray.length; i++) {
+  answersConversion();
+  // var tempArray = answersConversion();
+  // var tempArray = [2,3,4];
+  for(var i = 0; i < dataArray.length; i++) {
     numOfQuestionsAnswerd++;
   }
   console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
