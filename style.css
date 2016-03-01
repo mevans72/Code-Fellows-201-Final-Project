@@ -5,6 +5,7 @@ body {
   padding-left: 10px;
   display: flex;
   list-style-type: none;
+  position: fixed;
 }
 .nav{
  margin: 10px;
@@ -13,13 +14,14 @@ body {
   text-align: center;
 }
 .toggle-graphs{
-  width: 7.5%;
+  width: 9.5%;
   border: 1px solid black;
   list-style-type: none;
   padding-left: 14px;
   display: flex;
   flex-direction: column;
   background-color: #A5ACAF;
+  height: 550px;
 }
 .graphoptions{
   margin: 20px;
@@ -27,4 +29,6 @@ body {
   display: flex;
   align-items: center;
   margin-left: 2px;
+  padding-top: 30px;
 }
+.listOf
