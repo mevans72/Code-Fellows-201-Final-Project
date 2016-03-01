@@ -1,20 +1,39 @@
 body {
-  font-family: "IntelClear", sans-serif}
+  font-family: "IntelClear", sans-serif
+}
 
-.pull-left{
+/*Nav bar*/
+.nav-bar-top {
   padding-left: 10px;
   display: flex;
   list-style-type: none;
   position: fixed;
+  background: #002C5F;
+  width: 100%;
 }
-.nav{
- margin: 10px;
+
+/*nav bar elements are spread out*/
+.nav {
+  margin: 10px;
 }
-.footer{
+.nav a:link {
+  color: #69BE28;
+  text-decoration: none;
+}
+.nav a:hover {
+  color: white;
+}
+.nav a:visited {
+  color: #818A8F;
+}
+/*centers the footer*/
+.footer {
   text-align: center;
 }
-.toggle-graphs{
-  width: 9.5%;
+
+/*left side bar*/
+.toggle-graphs {
+  width: 8.5%;
   border: 1px solid black;
   list-style-type: none;
   padding-left: 14px;
@@ -23,7 +42,9 @@ body {
   background-color: #A5ACAF;
   height: 550px;
 }
-.graphoptions{
+
+/*individual pictures on the left side bar*/
+.graphoptions {
   margin: 20px;
   font-size: 10px;
   display: flex;
@@ -31,4 +52,23 @@ body {
   margin-left: 2px;
   padding-top: 30px;
 }
-.listOf
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 35px;
+  background-color: #808080;
+  }
+.header img {
+  width: 25%;
+  height: 25%;
+  position: relative;
+  top: 20px;
+  left: 80px;
+}
+.dashboard-description {
+  position: relative;
+  top: 10px;
+  left: 600px;
+}
