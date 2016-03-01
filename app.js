@@ -42,7 +42,7 @@ function countNumOfTotalQuestions() {
 function countNumOfQuestionsAnswerd() {
   numOfQuestionsAnswerd = 0;
   var tempArray = answersConversion();
-  for(var i = 0; i < tempArray.length; i++) {
+  for(var i = 0; i < dataArray.length; i++) {
     numOfQuestionsAnswerd++;
   }
   console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
