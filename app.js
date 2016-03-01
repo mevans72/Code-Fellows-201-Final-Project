@@ -30,25 +30,21 @@
 // var question1 = new complianceAudit('question20', 'questAnwer20');
 
 var answers = {};
-var displayedResults = document.getElementById('question1');
+// var displayedResults = document.getElementById('question1');
+// var questAnswers = [];
 
 function dataSelected(event){
   var objKey = event.target.id;
   answers[objKey] = event.target.value;
-  // // var chosenField = document.getElementById('question1');
-  // var chosenResult = displayedResults.options[displayedResults.selectedIndex].text;
-  // console.log(event.target.value);
   console.log(answers);
 }
 
-storedData.addEventListener('change', dataSelected);
-//
-// function dataEventListener(){
-//   for(var i = 0; i < displayedResults.length; i++){
-//     console.log(i);
-//     displayedAllQuestions.addEventListener('change', dataSelected);
-//   }
-// }
-// dataEventListener();
 
-//dataSelected();
+storedData.addEventListener('change', dataSelected);
+
+
+function answersConversion(){
+  var dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
+  console.log(dataArray);
+}
+answersConversion();
