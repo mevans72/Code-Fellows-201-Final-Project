@@ -1,18 +1,21 @@
 body {
   font-family: "IntelClear", sans-serif}
-
-.pull-left{
+/*Nav bar*/
+.nav-bar-top{
   padding-left: 10px;
   display: flex;
   list-style-type: none;
   position: fixed;
 }
+/*nav bar elements are spread out*/
 .nav{
  margin: 10px;
 }
+/*centers the footer*/
 .footer{
   text-align: center;
 }
+/*left side bar*/
 .toggle-graphs{
   width: 9.5%;
   border: 1px solid black;
@@ -23,6 +26,7 @@ body {
   background-color: #A5ACAF;
   height: 550px;
 }
+/*individual pictures on the left side bar*/
 .graphoptions{
   margin: 20px;
   font-size: 10px;
