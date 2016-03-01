@@ -1,22 +1,38 @@
 body {
-  font-family: "IntelClear", sans-serif}
+  font-family: "IntelClear", sans-serif
+}
+
 /*Nav bar*/
-.nav-bar-top{
+.nav-bar-top {
   padding-left: 10px;
   display: flex;
   list-style-type: none;
   position: fixed;
+  background: #002C5F;
+  width: 100%;
 }
+
 /*nav bar elements are spread out*/
-.nav{
- margin: 10px;
+.nav {
+  margin: 10px;
+}
+.nav a:link {
+  color: #69BE28;
+  text-decoration: none;
+}
+.nav a:hover {
+  color: white;
+}
+.nav a:visited {
+  color: #818A8F;
 }
 /*centers the footer*/
-.footer{
+.footer {
   text-align: center;
 }
+
 /*left side bar*/
-.toggle-graphs{
+.toggle-graphs {
   width: 8.5%;
   border: 1px solid black;
   list-style-type: none;
@@ -26,8 +42,9 @@ body {
   background-color: #A5ACAF;
   height: 550px;
 }
+
 /*individual pictures on the left side bar*/
-.graphoptions{
+.graphoptions {
   margin: 20px;
   font-size: 10px;
   display: flex;
