@@ -13,17 +13,18 @@ body {
   text-align: center;
 }
 .toggle-graphs{
-  width: 10%;
+  width: 7.5%;
   border: 1px solid black;
   list-style-type: none;
-  padding-left: 3px;
+  padding-left: 14px;
   display: flex;
   flex-direction: column;
-  background-color: grey;
+  background-color: #A5ACAF;
 }
 .graphoptions{
   margin: 20px;
   font-size: 10px;
-  padding-left: 0px;
-  margin-left: 0px;
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
 }
