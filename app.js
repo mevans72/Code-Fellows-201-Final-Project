@@ -30,8 +30,8 @@
 // var question1 = new complianceAudit('question20', 'questAnwer20');
 
 var answers = {};
-var displayedResults = document.getElementById('question1');
-var questAnswers = [];
+// var displayedResults = document.getElementById('question1');
+// var questAnswers = [];
 
 function dataSelected(event){
   var objKey = event.target.id;
