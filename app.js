@@ -4,6 +4,8 @@ var numOfTotalQuestions = 0;
 var numOfQuestionsAnswerd = 0;
 var percentageComplete = 0;
 var dataArray = [];
+var keyArray = [];
+var storeData;
 
 
 var answers = {};
@@ -23,9 +25,15 @@ storedData.addEventListener('change', dataSelected);
 function answersConversion(){
   dataArray = [];
   dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
-  console.log(dataArray);
+  // console.log(dataArray);
 }
 // answersConversion();
+
+function objectKeyExtraction() {
+  keyArray = [];
+  keyArray = Object.keys(answers);
+  // console.log(keyArray);
+}
 
 
 function countNumOfTotalQuestions() {
@@ -36,7 +44,7 @@ function countNumOfTotalQuestions() {
   for(var i = 0; i < selectsArray.length; i++) {
     numOfTotalQuestions++;
   }
-  console.log('The number of total questions (or selects) is: ' + numOfTotalQuestions);
+  // console.log('The number of total questions (or selects) is: ' + numOfTotalQuestions);
 }
 
 function countNumOfQuestionsAnswerd() {
@@ -47,18 +55,19 @@ function countNumOfQuestionsAnswerd() {
   for(var i = 0; i < dataArray.length; i++) {
     numOfQuestionsAnswerd++;
   }
-  console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
+  // console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
 }
 
 function calcPercentageComplete() {
   percentageComplete = numOfQuestionsAnswerd / numOfTotalQuestions;
-  console.log('The percentage of questionaire completed is: ' + percentageComplete);
+  // console.log('The percentage of questionaire completed is: ' + percentageComplete);
 }
 
 function percentageCompleteHandler(){
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
   calcPercentageComplete();
+  objectKeyExtraction();
 }
 
 
