@@ -44,7 +44,7 @@ storedData.addEventListener('change', dataSelected);
 
 
 function answersConversion(){
-  var dataArray = Object.keys(answers).map(function(e) { return answers[e]; } );
+  var dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
   console.log(dataArray);
 }
 answersConversion();
