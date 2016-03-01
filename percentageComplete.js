@@ -3,6 +3,7 @@
 var numOfTotalQuestions = 0;
 var numOfQuestionsAnswerd = 0;
 var percentageComplete = 0;
+var dataArray = [];
 
 
 
@@ -16,11 +17,33 @@ function countNumOfTotalQuestions() {
   }
   console.log('The number of total questions (or selects) is: ' + numOfTotalQuestions);
 }
-countNumOfTotalQuestions();
+
 
 //iterate over an array. Not so good...
-// function countNumOfQuestionsAnswerd() {
-//   var dataArray = [];
+function countNumOfQuestionsAnswerd() {
+  numOfQuestionsAnswerd = 0;
+  var tempArray = answersConversion();
+  for(var i = 0; i < tempArray.length; i++) {
+    numOfQuestionsAnswerd++;
+  }
+  console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
+}
+
+function calcPercentageComplete() {
+  percentageComplete = numOfQuestionsAnswerd / numOfTotalQuestions;
+  console.log('The percentage of questionaire completed is: ' + percentageComplete);
+}
+
+function percentageCompleteHandler(){
+  countNumOfTotalQuestions();
+  countNumOfQuestionsAnswerd();
+  calcPercentageComplete();
+}
+
+auditData.addEventListener('change', percentageCompleteHandler);
+
+
+//   dataArray = [];
 //   // answersConversion();
 //   dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
 //   for(var i = 0; i < dataArray.length; i++) {
@@ -29,7 +52,7 @@ countNumOfTotalQuestions();
 //   percentageComplete = numOfQuestionsAnswerd / numOfTotalQuestions;
 //   console.log('You answered ' + numOfQuestionsAnswerd + ' questions out of ' + numOfTotalQuestions + ' total questions.');
 // }
-
+//
 // function countNumOfQuestionsAnswerd() {
 
   // var dataArray = [];
@@ -88,7 +111,6 @@ function hideThingsTemporarily() {
 var answers = {};
 var displayedResults = document.getElementById('question1');
 var questAnswers = [];
-var dataArray = [];
 
 function dataSelected(event){
   var objKey = event.target.id;
