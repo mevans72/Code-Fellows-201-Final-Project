@@ -119,6 +119,8 @@ function renderIndividualBarChart() {
   new Chart(ctx).Bar(chartData);
 }
 
+// The data used in the 2nd chart (individualBarChart) and
+//  3rd chart (individualPieChart) is the same as instructed
 function renderIndividualPieChart() {
   var canvas = recreateCanvas("individualPieChart", "550", "400");
   var ctx = canvas.getContext("2d");
