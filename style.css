@@ -1,5 +1,7 @@
 body {
-  font-family: "IntelClear", sans-serif
+  /*display: flex;*/
+  font-family: "IntelClear", sans-serif;
+  background: #A5ACAF;
 }
 
 /*Nav bar*/
@@ -16,19 +18,33 @@ body {
 .nav {
   margin: 10px;
 }
-.nav a:link {
+a:link {
   color: #69BE28;
   text-decoration: none;
 }
-.nav a:hover {
+a:hover {
   color: white;
 }
-.nav a:visited {
+a:visited {
   color: #818A8F;
 }
 /*centers the footer*/
-.footer {
+footer {
+  background: #002C5F;
+  width: 100%;
+  height: 50px;
+  /*justify-content: center;
+  flex-direction: row;
+  align-items: flex-end;*/
+  position: absolute;
+  top: 500px;
   text-align: center;
+  margin: auto;
+  color: white;
+}
+footer h3{
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 /*left side bar*/
@@ -55,20 +71,31 @@ body {
 
 .header {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
   position: absolute;
   top: 35px;
-  background-color: #808080;
+  height: 300px;
+  background-color: #818A8F;
   }
 .header img {
   width: 25%;
-  height: 25%;
+  height: 50%;
   position: relative;
-  top: 20px;
-  left: 80px;
+  top: 50px;
+  left: 150px;
 }
 .dashboard-description {
   position: relative;
-  top: 10px;
-  left: 600px;
+  top: 50px;
+  left: 500px;
+}
+
+.dashboard-description h1{
+  padding-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+.dashboard-description p{
+  width: 400px;
 }
