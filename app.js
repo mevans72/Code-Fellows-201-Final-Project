@@ -228,9 +228,6 @@ function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
   }
 }
 
-storedData.addEventListener('change', dataSelected);
-storedData.addEventListener('change', percentageCompleteHandler);
-
 //buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
 // function destroyExistingBarChart() {
 //   if (barChart != null) {

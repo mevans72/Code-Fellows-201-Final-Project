@@ -27,7 +27,7 @@ hideThingsTemporarily();
 // question20:'9'
 // }
 
-var answers = {
+var answers-temp = {
   question1:'9',
   question2:'6',
   question3:'5',
@@ -44,13 +44,5 @@ var answers = {
   question14:'2',
   question15:'5'
 };
-
-sansCriticalControlsBarChartLabelsArray = ['CSC-1','CSC-2','CSC-3','CSC-4','CSC-5','CSC-6','CSC-7','CSC-8','CSC-9','CSC-10','CSC-11','CSC-12','CSC-13','CSC-14','CSC-15','CSC-16','CSC-17','CSC-18','CSC-19','CSC-20'];
-
-countNumOfTotalQuestions();
-countNumOfQuestionsAnswerd();
-calcPercentageComplete();
-objectKeyExtraction();
-
 
 //end of to be deleted
