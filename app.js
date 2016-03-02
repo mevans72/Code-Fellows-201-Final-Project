@@ -3,7 +3,7 @@
 var numOfTotalQuestions = 0;
 var numOfQuestionsAnswerd = 0;
 var percentageComplete = 0;
-var dataArray = [];
+var keyValueArray = [];
 var keyArray = [];
 var storeData;
 var answers = {};
@@ -15,9 +15,9 @@ function dataSelected(event){
 }
 
 function answersConversion(){
-  dataArray = [];
-  dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
-  // console.log(dataArray);
+  keyValueArray = [];
+  keyValueArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
+  // console.log(keyValueArray);
 }
 
 function objectKeyExtraction() {
@@ -40,7 +40,7 @@ function countNumOfTotalQuestions() {
 function countNumOfQuestionsAnswerd() {
   numOfQuestionsAnswerd = 0;
   answersConversion();
-  for(var i = 0; i < dataArray.length; i++) {
+  for(var i = 0; i < keyValueArray.length; i++) {
     numOfQuestionsAnswerd++;
   }
   // console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
@@ -58,7 +58,7 @@ function percentageCompleteHandler(){
   objectKeyExtraction();
 }
 
-function buildTables(dataArray,headerArray,buildLocation,title) {
+function buildTables(tableDataArray,tableHeaderArray,buildLocation,title) {
 //Declare table location, table title, and begin building the initial table element
   var tableLocation = document.getElementById(buildLocation);
   var h3 = document.createElement('h3');
@@ -79,21 +79,21 @@ function buildTables(dataArray,headerArray,buildLocation,title) {
     trEL.appendChild(thEL);
   }
 //Build the table rows
-  for (var i=0; i < dataArray.length; i++) {
+  for (var i=0; i < tableHeaderArray.length; i++) {
     var trEL = document.createElement('tr');
     table.appendChild(trEL);
-    for (var j=0; j < dataArray[i].length; j++){
+    for (var j=0; j < tableHeaderArray[i].length; j++){
       var tdEl = document.createElement('td');
-      tdEl.textContent = dataArray[i][j];
+      tdEl.textContent = tableHeaderArray[i][j];
       trEL.appendChild(tdEl);
     }
   }
 }
 
-storedData.addEventListener('change', dataSelected);
-storedData.addEventListener('change', percentageCompleteHandler);
+storedData.addEventListener('change',dataSelected);
+storedData.addEventListener('change',percentageCompleteHandler);
 
-//buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
+// buildTables(recomendationsArray,recomendationsHeaderArray,'buildResultsTableHere','SANS Cricital Conrtols Recommendations');
 
 
 
@@ -122,3 +122,28 @@ storedData.addEventListener('change', percentageCompleteHandler);
 //         label: "Yellow"
 //     }
 // ]
+
+
+
+function buildBarChart() {
+  destroyExistingChart();
+  genChartLabels();
+  genChartData();
+  var barData = {
+    labels : labelsArray,
+    datasets : [
+      {
+        fillColor : '#48A497',
+        strokeColor : '#48A4D1',
+        data : clicksArray
+      },
+      {
+        fillColor : 'rgba(73,188,170,0.4)',
+        strokeColor : 'rgba(72,174,209,0.4)',
+        data : displayedArray
+      }
+    ]
+  };
+  var clickedAndDisplayedChart = document.getElementById('buildGraphHere').getContext('2d');
+  barChart = new Chart(clickedAndDisplayedChart).Bar(barData);
+}
