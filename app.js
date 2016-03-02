@@ -56,11 +56,47 @@ function calcPercentageComplete() {
   // console.log('The percentage of questionaire completed is: ' + percentageComplete);
 }
 
+function renderPercentageCompleteChart() {
+  var ctx = document.getElementById("percentageChart").getContext("2d");
+  console.log(ctx)
+  var chartData = [{
+    value: numOfQuestionsAnswerd,
+    color: "#00FF00",
+    highlight: "#44FF44",
+    label: "Questions Answered"
+  }, {
+    value: numOfTotalQuestions - numOfQuestionsAnswerd,
+    color: "#FF0000",
+    highlight: "#FF4444",
+    label: "Remaining Questions"
+  }]
+  new Chart(ctx).Pie(chartData);
+}
+
+function renderIndividualBarChart() {
+  var ctx = document.getElementById("individualBarChart").getContext("2d");
+  console.log(ctx)
+  var chartData = {
+    labels: keyArray,
+    datasets: [{
+      label: "My dataset",
+      fillColor: "rgba(151,187,205,0.5)",
+      strokeColor: "rgba(151,187,205,0.8)",
+      highlightFill: "rgba(151,187,205,0.75)",
+      highlightStroke: "rgba(151,187,205,1)",
+      data: dataArray
+    }]
+  };
+  new Chart(ctx).Bar(chartData);
+}
+
 function percentageCompleteHandler(){
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
   calcPercentageComplete();
   objectKeyExtraction();
+  renderPercentageCompleteChart();
+  renderIndividualBarChart();
 }
 
 function buildTables(dataArray,headerArray,buildLocation,title) {
@@ -99,31 +135,3 @@ storedData.addEventListener('change', dataSelected);
 storedData.addEventListener('change', percentageCompleteHandler);
 
 //buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
-
-
-
-// var ctx = document.getElementById("myChart").getContext("2d");
-// var myNewChart = new Chart(ctx).PolarArea(data);
-//
-// var myDoughnutChart = new Chart(ctx[1]).Doughnut(data,options);
-//
-// var data = [
-//     {
-//         value: 300,
-//         color:"#F7464A",
-//         highlight: "#FF5A5E",
-//         label: "Red"
-//     },
-//     {
-//         value: 50,
-//         color: "#46BFBD",
-//         highlight: "#5AD3D1",
-//         label: "Green"
-//     },
-//     {
-//         value: 100,
-//         color: "#FDB45C",
-//         highlight: "#FFC870",
-//         label: "Yellow"
-//     }
-// ]
