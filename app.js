@@ -15,34 +15,39 @@ function dataSelected(event){
 }
 
 function answersConversion(){
-  dataArray = [];
+  //dataArray = [];
   dataArray = Object.keys(answers).map(function(e) { return parseInt(answers[e]); } );
   // console.log(dataArray);
 }
 
 function objectKeyExtraction() {
-  keyArray = [];
+  //keyArray = [];
   keyArray = Object.keys(answers);
   // console.log(keyArray);
 }
 
 function countNumOfTotalQuestions() {
-  numOfTotalQuestions = 0;
-  var selectsArray = [];
-  var select = [];
-  selectsArray = document.getElementsByTagName('select');
-  for(var i = 0; i < selectsArray.length; i++) {
-    numOfTotalQuestions++;
-  }
+  // numOfTotalQuestions = 0;
+  // var selectsArray = [];
+  // var select = [];
+  // selectsArray = document.getElementsByTagName('select');
+  // for(var i = 0; i < selectsArray.length; i++) {
+  //   numOfTotalQuestions++;
+  // }
+
+  // This line does all the calculation needed
+  numOfTotalQuestions = document.getElementsByTagName('select').length;
   // console.log('The number of total questions (or selects) is: ' + numOfTotalQuestions);
 }
 
 function countNumOfQuestionsAnswerd() {
-  numOfQuestionsAnswerd = 0;
+  //numOfQuestionsAnswerd = 0;
   answersConversion();
-  for(var i = 0; i < dataArray.length; i++) {
-    numOfQuestionsAnswerd++;
-  }
+  // for(var i = 0; i < dataArray.length; i++) {
+  //   numOfQuestionsAnswerd++;
+  // }
+
+  numOfQuestionsAnswerd = dataArray.length;
   // console.log('The number of questions answered is: ' + numOfQuestionsAnswerd);
 }
 
