@@ -85,17 +85,17 @@ function calcPercentageComplete() {
 }
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  var letters = '0123456789ABCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 function shadeColor(color, percent) {
-    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
-    return '#'+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+  var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+  return '#'+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
 }
 
 function recreateCanvas(id, width, height) {
@@ -126,7 +126,7 @@ function renderPercentageCompleteChart() {
     color: '#FF0000',
     highlight: '#FF4444',
     label: 'Remaining Questions'
-  }]
+  }];
   new Chart(ctx).Pie(chartData);
 }
 
@@ -141,7 +141,7 @@ function renderIndividualBarChart() {
       strokeColor: 'rgba(151,187,205,0.8)',
       highlightFill: 'rgba(151,187,205,0.75)',
       highlightStroke: 'rgba(151,187,205,1)',
-      data: dataArray
+      data: keyArray
     }]
   };
   new Chart(ctx).Bar(chartData);
@@ -157,7 +157,7 @@ function renderIndividualPieChart() {
     var rcolor = getRandomColor();
     chartData.push({
       label: keyArray[i],
-      value: dataArray[i],
+      value: keyArray[i],
       color: rcolor,
       highlight: shadeColor(rcolor, 0.3)
     });
@@ -174,7 +174,7 @@ function percentageCompleteHandler(){
   renderPercentageCompleteChart();
   renderIndividualBarChart();
   renderIndividualPieChart();
-  console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
+  console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
 }
 
 function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
@@ -213,17 +213,17 @@ storedData.addEventListener('change', dataSelected);
 storedData.addEventListener('change', percentageCompleteHandler);
 
 //buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
-function destroyExistingBarChart() {
-  if (barChart != null) {
-    barChart.destroy();
-  }
-}
+// function destroyExistingBarChart() {
+//   if (barChart != null) {
+//     barChart.destroy();
+//   }
+// }
 
-function destroyExistingPieChart() {
-  if (PieChart != null) {
-    PieChart.destroy();
-  }
-}
+// function destroyExistingPieChart() {
+//   if (PieChart != null) {
+//     PieChart.destroy();
+//   }
+// }
 
 function destroyExistingPolarChart() {
   if (polarChart != null) {
@@ -280,42 +280,42 @@ function buildSansCriticalControlsPolarChart() {
   polarChart = new Chart(sansCriticalControlsPolarChart).PolarArea(polarData);
 }
 
-function buildSansCriticalControlsBarChart() {
-  destroyExistingBarChart();
-  // objectKeyValueExtraction();
-  var barData = {
-    labels: sansCriticalControlsBarChartLabelsArray,
-    datasets: [{
-      fillColor: '#002C5F',
-      strokeColor: '#69BE28',
-      data: keyValueArray
-    }]
-  };
-  var sansCriticalControlsBarChart = document.getElementById('buildSansCriticalControlsBarChartHere').getContext('2d');
-  barChart = new Chart(sansCriticalControlsBarChart).Bar(barData);
-}
+// function buildSansCriticalControlsBarChart() {
+//   destroyExistingBarChart();
+//   // objectKeyValueExtraction();
+//   var barData = {
+//     labels: sansCriticalControlsBarChartLabelsArray,
+//     datasets: [{
+//       fillColor: '#002C5F',
+//       strokeColor: '#69BE28',
+//       data: keyValueArray
+//     }]
+//   };
+//   var sansCriticalControlsBarChart = document.getElementById('buildSansCriticalControlsBarChartHere').getContext('2d');
+//   barChart = new Chart(sansCriticalControlsBarChart).Bar(barData);
+// }
 
-function buildPercentagePieChart() {
-  destroyExistingPieChart();
-  // objectKeyValueExtraction();
-  var pieData = [{
-    value: percentageComplete,
-    color: '#002C5F'
-  },
-    {
-      value: percentageNotComplete,
-      color: '#69BE28'
-    }
-  ];
-
-  var pieOptions = {
-    segmentShowStroke : false,
-    animateScale : true
-  };
-
-  var sansPercentagePieChartHere = document.getElementById('buildPercentagePieChartHere').getContext('2d');
-  pieChart = new Chart(sansPercentagePieChartHere).Pie(pieData, pieOptions);
-}
+// function buildPercentagePieChart() {
+//   destroyExistingPieChart();
+//   // objectKeyValueExtraction();
+//   var pieData = [{
+//     value: percentageComplete,
+//     color: '#002C5F'
+//   },
+//     {
+//       value: percentageNotComplete,
+//       color: '#69BE28'
+//     }
+//   ];
+//
+//   var pieOptions = {
+//     segmentShowStroke : false,
+//     animateScale : true
+//   };
+//
+//   var sansPercentagePieChartHere = document.getElementById('buildPercentagePieChartHere').getContext('2d');
+//   pieChart = new Chart(sansPercentagePieChartHere).Pie(pieData, pieOptions);
+// }
 
 storedData.addEventListener('change',dataSelected);
 storedData.addEventListener('change',percentageCompleteHandler);
