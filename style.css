@@ -72,30 +72,33 @@ footer h3{
 .home-top-section {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   top: 35px;
   height: 300px;
   background-color: #818A8F;
   }
-.home-top-section img {
-  width: 25%;
-  height: 50%;
-  position: relative;
-  top: 50px;
-  left: 150px;
+.home-top-section img{
+  width: 50%;
+  height: 100%;
+  /*position: relative;*/
+  top: 0px;
+  left: 0px;
 }
 .dashboard-description {
-  position: relative;
+  /*position: relative;*/
   top: 50px;
   left: 500px;
+  margin-left: 10%;
+  margin-top: 2%;
 }
 
 .dashboard-description h1{
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 36px;
 }
+
 .dashboard-description p{
   width: 400px;
 }
