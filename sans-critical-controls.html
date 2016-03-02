@@ -1,90 +1,56 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <link type="text/css" rel="stylesheet" href="style.css" />
-    <script src="chart.min.js"> </script>
 
-    <title>Questionnaire</title>
-  </head>
-  <body>
-    <header>
-      Webpage Security Questionnaire
-    </header>
+<head>
+  <meta charset="utf-8">
+  <title>Questionnaire</title>
+  <link href="reset.css" rel="stylesheet" type="css/text">
+  <link href="style.css" type="css/text" rel="stylesheet">
+  <script src="chart.min.js">
+  </script>
+</head>
 
+<body>
+  <header class="header">
     <nav>
-  <div class="nav">
-    <div class="container">
       <ul class="nav-bar-top">
-        <li><a href="home">Home</a></li>
-        <link type="home" rel='home' href="index.html" />
-        <li><a href="dashboard">Dashboard</a></li>
-        <link type="dashboard" rel="dashboard" href="dashboard.html" />
-        <li><a href="questionnaire">Questionnaire</a></li>
-        <link type="questionnaire" rel="questionnaire" href="sans-critical-controls.html" />
+        <li class="nav">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="nav">
+          <a href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav">
+          <a href="sans-critical-controls.html">Questionnaire</a>
+        </li>
       </ul>
-</nav>
-
-    <section>
-    </section>
-
-    <section class="header">
-        <article class="dashboard-description">
-        <h1> SEA SEC
-     </h1>
+    </nav>
+  </header>
+      <section class="questionaire-top">
+        <img src="assets/img/spaceneedle.jpg" alt="Space Needle">
+        <h1>SANS Critical Controls Audit</h1>
         <ul>
           <li>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </li>
         </ul>
-      </article>
-      <img src="assets/img/spaceneedle.jpg" alt="Space Needle">
-    </section>
-    <br>
-    <aside>
-    <!-- <aside id="chartContainer"> -->
-    </aside>
+      </section>
 
-  <ul id="storedData">
-    <li><strong>CIS  CRITICAL SECURITY CONTROLS</strong></li>
-    <li><strong>Rate Your Webpage 1-10 For Each Evaluation Topic</strong></li>
-    &nbsp;
-    <li><strong>Inventory of Authorized and Unathorized Devices:</strong> Actively manage (inventory, track, and correct) all hardware devices on the network so that only authorized devices are given access, and unauthorized and unmanaged devices are found and prevented from gaining access.</li>
-      <select id="question1">
-        <option>-Choose-</option>
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>N/A</option>
-      </select>
+      <aside>
+        <h3>Percentage Complete</h3>
+        <a id="chartContainer"></a>
+        <!-- <aside id="chartContainer"> -->
+      </aside>
 
-      <li><strong>Inventory of Authorized and Unauthorized Software:</strong>Actively manage (inventory, track, and correct) all software on the network so that only authorized software is installed and can execute, and unauthorized and unmanaged software is found and prevented from installation or execution.></li>
-        <select id="question2">
-          <option>-Choose-</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>N/A</option>
-        </select>
+      <section class="questionaire-mid">
+        <ul id="storedData">
+          <li><strong>CIS  CRITICAL SECURITY CONTROLS</strong></li>
+          <li><strong>Rate Your Webpage 1-10 For Each Evaluation Topic</strong></li>
 
-        <li><strong>Secure Configurations for Hardware and Software on Mobile Devices, Laptops, Workstations, and Servers:</strong> Establish, implement, and actively manage (track, report on, and correct) the security configurations of laptops, servers, and workstations using a rigorous configuration management and change control process in order to prevent attackers from exploiting vulnerable services and settings.</li>
-          <select id="question3">
+          <li><strong>Inventory of Authorized and Unathorized Devices:</strong> Actively manage (inventory, track, and correct) all hardware devices on the network so that only authorized devices are given access, and unauthorized and unmanaged devices are
+            found and prevented from gaining access.</li>
+          <select id="CSC-1">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -100,8 +66,9 @@
             <option>N/A</option>
           </select>
 
-        <li><strong>Continuous Vulnerability Assessment and Remediation:</strong> Continuously acquire, assess, and take action on new information in order to identify vulnerabilities, and to remediate and minimize the window of opportunity for attackers.</li>
-          <select id="question4">
+          <li><strong>Inventory of Authorized and Unauthorized Software:</strong>Actively manage (inventory, track, and correct) all software on the network so that only authorized software is installed and can execute, and unauthorized and unmanaged software
+            is found and prevented from installation or execution.></li>
+          <select id="CSC-2">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -117,76 +84,114 @@
             <option>N/A</option>
           </select>
 
-        <li><strong>Controlled Use of Administrative Privileges:</strong> Track, control, prevent, and correct the use, assignment, and configuration of administrative privileges on computers, networks, and applications.</li>
-        <select id="question5">
-          <option>-Choose-</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>N/A</option>
-        </select>
+          <li><strong>Secure Configurations for Hardware and Software on Mobile Devices, Laptops, Workstations, and Servers:</strong> Establish, implement, and actively manage (track, report on, and correct) the security configurations of laptops, servers,
+            and workstations using a rigorous configuration management and change control process in order to prevent attackers from exploiting vulnerable services and settings.</li>
+          <select id="CSC-3">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
 
-        <li><strong>Maintenance, Monitoring, and Analysis of Audit Logs:</strong> Collect, manage, and analyze audit logs of events that could help detect, understand, or recover from an attack.</li>
-        <select id="question6">
-          <option>-Choose-</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>N/A</option>
-        </select>
+          <li><strong>Continuous Vulnerability Assessment and Remediation:</strong> Continuously acquire, assess, and take action on new information in order to identify vulnerabilities, and to remediate and minimize the window of opportunity for attackers.</li>
+          <select id="CSC-4">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
 
-        <li><strong>Email and Web Browser Protections:</strong> Minimize the attack surface and the opportunities for attackers to manipulate human behavior through their interactions with web browsers and e-mail systems.</li>
-        <select id="question7">
-          <option>-Choose-</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>N/A</option>
-        </select>
+          <li><strong>Controlled Use of Administrative Privileges:</strong> Track, control, prevent, and correct the use, assignment, and configuration of administrative privileges on computers, networks, and applications.</li>
+          <select id="CSC-5">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
 
-        <li><strong>Malware Defenses:</strong> Control the installation, spread, and execution of malicious code at multiple points in the enterprise, while optimizing the use of automation to enable rapid updating of defense, data gathering, and corrective action.</li>
-        <select id="question8">
-          <option>-Choose-</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>N/A</option>
-        </select>
+          <li><strong>Maintenance, Monitoring, and Analysis of Audit Logs:</strong> Collect, manage, and analyze audit logs of events that could help detect, understand, or recover from an attack.</li>
+          <select id="CSC-6">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
 
-        <li><strong>Limitation and Control of Network Ports, Protocols, and Services:</strong> Manage (track, control, and correct) the ongoing operational use of ports, protocols, and services on networked devices in order to minimize windows of vulnerability available to attackers.</li>
-          <select id="question9">
+          <li><strong>Email and Web Browser Protections:</strong> Minimize the attack surface and the opportunities for attackers to manipulate human behavior through their interactions with web browsers and e-mail systems.</li>
+          <select id="CSC-7">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
+
+          <li><strong>Malware Defenses:</strong> Control the installation, spread, and execution of malicious code at multiple points in the enterprise, while optimizing the use of automation to enable rapid updating of defense, data gathering, and corrective
+            action.
+          </li>
+          <select id="CSC-8">
+            <option>-Choose-</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>N/A</option>
+          </select>
+
+          <li><strong>Limitation and Control of Network Ports, Protocols, and Services:</strong> Manage (track, control, and correct) the ongoing operational use of ports, protocols, and services on networked devices in order to minimize windows of vulnerability
+            available to attackers.</li>
+          <select id="CSC-9">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -203,7 +208,7 @@
           </select>
 
           <li><strong>Data Recovery Capability:</strong> Properly back up critical information with a proven methodology for timely recovery.</li>
-          <select id="question10">
+          <select id="CSC-10">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -219,8 +224,9 @@
             <option>N/A</option>
           </select>
 
-          <li><strong>Secure Configurations for Network Devices such as Firewalls, Routers, and Switches:</strong> Establish, implement, and actively manage (track, report on, and correct) the security configuration of network infrastructure devices using a rigorous configuration management and change control process in order to prevent attackers from exploiting vulnerable services and settings.</li>
-          <select id="question11">
+          <li><strong>Secure Configurations for Network Devices such as Firewalls, Routers, and Switches:</strong> Establish, implement, and actively manage (track, report on, and correct) the security configuration of network infrastructure devices using
+            a rigorous configuration management and change control process in order to prevent attackers from exploiting vulnerable services and settings.</li>
+          <select id="CSC-11">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -237,7 +243,7 @@
           </select>
 
           <li><strong>Boundary Defense:</strong> Detect, prevent, and correct the flow of information transferring networks of different trust levels with a focus on security-damaing data.</li>
-          <select id="question12">
+          <select id="CSC-12">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -254,7 +260,7 @@
           </select>
 
           <li><strong>Data Protection:</strong> Prevent data exfiltration, mitigate the effects of efiltrated data, and ensure the privacy and integrity of sensitive information.</li>
-          <select id="question13">
+          <select id="CSC-13">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -270,8 +276,9 @@
             <option>N/A</option>
           </select>
 
-          <li><strong>Controlled Access Based on the Need to Know:</strong> Track, control, prevent, correct, and secure access to critical assets (e.g., information, resources, systems) according to the formal determination of which persons, computers, and applications have a need and right to access these critical assets based on an approved classification.</li>
-          <select id="question14">
+          <li><strong>Controlled Access Based on the Need to Know:</strong> Track, control, prevent, correct, and secure access to critical assets (e.g., information, resources, systems) according to the formal determination of which persons, computers, and
+            applications have a need and right to access these critical assets based on an approved classification.</li>
+          <select id="CSC-14">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -288,7 +295,7 @@
           </select>
 
           <li><strong>Wireless Access Control:</strong> Track, control, prevent, and correct the security use of wireless local area networks (LANS), access points, and wireless client systems.</li>
-          <select id="question15">
+          <select id="CSC-15">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -305,7 +312,7 @@
           </select>
 
           <li><strong>Account Monitoring and Control:</strong> Actively manange the life-cycle of system and application accounts - their creation, use, dormancy, deletion - in order to minimize opportunities for attackers to leverage them.</li>
-          <select id="question16">
+          <select id="CSC-16">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -321,8 +328,9 @@
             <option>N/A</option>
           </select>
 
-          <li><strong>Security Skills Assessment and Appropriate Training to Fill Gaps:</strong> Identify the specific knowledge, skills, and abilities needed to support defense of the enterprise; develop and execute an integrated plan to assess, identify and remediate gaps, through policy, organizational planning, training, and awareness programs for all functional roles in the organization.</li>
-          <select id="question17">
+          <li><strong>Security Skills Assessment and Appropriate Training to Fill Gaps:</strong> Identify the specific knowledge, skills, and abilities needed to support defense of the enterprise; develop and execute an integrated plan to assess, identify
+            and remediate gaps, through policy, organizational planning, training, and awareness programs for all functional roles in the organization.</li>
+          <select id="CSC-17">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -339,7 +347,7 @@
           </select>
 
           <li><strong>Applications Software Security:</strong> Manage the security life-cycle of all in-house developed and acquired software in order to prevent, detect, and correct security weaknesses.</li>
-          <select id="question18">
+          <select id="CSC-18">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -355,8 +363,10 @@
             <option>N/A</option>
           </select>
 
-          <li><strong>Incident Response and Management:</strong> Protect the organizations information, as well as its reputation, by developing and implementing an incident response infrastructure (e.g., plans, defined roles, training, communications, management oversight).</li>
-          <select id="question19">
+          <li><strong>Incident Response and Management:</strong> Protect the organizations information, as well as its reputation, by developing and implementing an incident response infrastructure (e.g., plans, defined roles, training, communications, management
+            oversight).
+          </li>
+          <select id="CSC-19">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -373,7 +383,7 @@
           </select>
 
           <li><strong>Penetration Tests and Red Team Exercises:</strong> Test the overall strength of an organizations defenses (technology, processes, and people) by simulation the objectives and actions of an attacker.</li>
-          <select id="question20">
+          <select id="CSC-20">
             <option>-Choose-</option>
             <option>0</option>
             <option>1</option>
@@ -388,17 +398,19 @@
             <option>10</option>
             <option>N/A</option>
           </select>
-</ul>
+        </ul>
+      </section>
+      <!-- <section id="chartContainer"></section> -->
+      <footer>
+        <p> Seattle, WA
+        </p>
+        <a href="social media links">Follow Us</a>
+        <a href="about-us.html">About Us</a>
+      </footer>
 
-<section id="chartContainer"></section>
+      <script src="app.js"></script>
+      <script src="data.js"></script>
 
+</body>
 
-<footer>
-<p> Seattle, WA
-</p>
-<a href="social media links">Follow Us</a>
-<a href="about-us.html">About Us</a>
-</footer>
-<script src="app.js"></script>
-  </body>
 </html>
