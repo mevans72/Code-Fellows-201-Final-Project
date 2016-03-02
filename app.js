@@ -19,11 +19,11 @@ var lowSeaSecScore = 0;
 function dataSelected(event) {
   var objKey = event.target.id;
   answers[objKey] = event.target.value;
-  // console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
+  // console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
 }
 
 function objectKeyExtraction() {
-  keyArray = [];
+  //keyArray = [];
   keyArray = Object.keys(answers);
   // console.log(keyArray);
 }
@@ -84,12 +84,97 @@ function calcPercentageComplete() {
   // console.log('The percentage of questionaire completed is: ' + percentageComplete);
 }
 
-function percentageCompleteHandler() {
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function shadeColor(color, percent) {
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return '#'+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
+
+function recreateCanvas(id, width, height) {
+  // To fix the chartjs bug when you mouse over the chart, it changes
+  //  after answering the 2nd question
+  var canvas = document.getElementById(id);
+  if (canvas) {
+    canvas.parentNode.removeChild(canvas);
+  }
+  canvas = document.createElement('canvas');
+  canvas.id = id;
+  canvas.width = width;
+  canvas.height = height;
+  document.getElementById('chartContainer').appendChild(canvas);
+  return canvas;
+}
+
+function renderPercentageCompleteChart() {
+  var canvas = recreateCanvas('percentageChart', '400', '400');
+  var ctx = canvas.getContext('2d');
+  var chartData = [{
+    value: numOfQuestionsAnswerd,
+    color: '#00FF00',
+    highlight: '#44FF44',
+    label: 'Questions Answered'
+  }, {
+    value: numOfTotalQuestions - numOfQuestionsAnswerd,
+    color: '#FF0000',
+    highlight: '#FF4444',
+    label: 'Remaining Questions'
+  }]
+  new Chart(ctx).Pie(chartData);
+}
+
+function renderIndividualBarChart() {
+  var canvas = recreateCanvas('individualBarChart', '550', '400');
+  var ctx = canvas.getContext('2d');
+  var chartData = {
+    labels: keyArray,
+    datasets: [{
+      label: 'My dataset',
+      fillColor: 'rgba(151,187,205,0.5)',
+      strokeColor: 'rgba(151,187,205,0.8)',
+      highlightFill: 'rgba(151,187,205,0.75)',
+      highlightStroke: 'rgba(151,187,205,1)',
+      data: dataArray
+    }]
+  };
+  new Chart(ctx).Bar(chartData);
+}
+
+// The data used in the 2nd chart (individualBarChart) and
+//  3rd chart (individualPieChart) is the same as instructed
+function renderIndividualPieChart() {
+  var canvas = recreateCanvas('individualPieChart', '550', '400');
+  var ctx = canvas.getContext('2d');
+  var chartData = [];
+  for (var i = 0; i < keyArray.length; i++) {
+    var rcolor = getRandomColor();
+    chartData.push({
+      label: keyArray[i],
+      value: dataArray[i],
+      color: rcolor,
+      highlight: shadeColor(rcolor, 0.3)
+    });
+  }
+  new Chart(ctx).PolarArea(chartData);
+
+}
+
+function percentageCompleteHandler(){
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
   calcPercentageComplete();
   objectKeyExtraction();
-  console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
+  renderPercentageCompleteChart();
+  renderIndividualBarChart();
+  renderIndividualPieChart();
+  console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
 }
 
 function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
@@ -124,6 +209,10 @@ function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
   }
 }
 
+storedData.addEventListener('change', dataSelected);
+storedData.addEventListener('change', percentageCompleteHandler);
+
+//buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
 function destroyExistingBarChart() {
   if (barChart != null) {
     barChart.destroy();
