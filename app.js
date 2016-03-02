@@ -56,9 +56,38 @@ function calcPercentageComplete() {
   // console.log('The percentage of questionaire completed is: ' + percentageComplete);
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function shadeColor(color, percent) {
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
+
+function recreateCanvas(id, width, height) {
+  // To fix the chartjs bug when you mouse over the chart, it changes
+  //  after answering the 2nd question
+  var canvas = document.getElementById(id);
+  if (canvas) {
+    canvas.parentNode.removeChild(canvas);
+  }
+  canvas = document.createElement("canvas");
+  canvas.id = id;
+  canvas.width = width;
+  canvas.height = height;
+  document.getElementById("chartContainer").appendChild(canvas);
+  return canvas;
+}
+
 function renderPercentageCompleteChart() {
-  var ctx = document.getElementById("percentageChart").getContext("2d");
-  console.log(ctx)
+  var canvas = recreateCanvas("percentageChart", "400", "400");
+  var ctx = canvas.getContext("2d");
   var chartData = [{
     value: numOfQuestionsAnswerd,
     color: "#00FF00",
@@ -74,8 +103,8 @@ function renderPercentageCompleteChart() {
 }
 
 function renderIndividualBarChart() {
-  var ctx = document.getElementById("individualBarChart").getContext("2d");
-  console.log(ctx)
+  var canvas = recreateCanvas("individualBarChart", "550", "400");
+  var ctx = canvas.getContext("2d");
   var chartData = {
     labels: keyArray,
     datasets: [{
@@ -90,6 +119,22 @@ function renderIndividualBarChart() {
   new Chart(ctx).Bar(chartData);
 }
 
+function renderIndividualPieChart() {
+  var canvas = recreateCanvas("individualPieChart", "550", "400");
+  var ctx = canvas.getContext("2d");
+  var chartData = [];
+  for (var i = 0; i < keyArray.length; i++) {
+    var rcolor = getRandomColor();
+    chartData.push({
+      label: keyArray[i],
+      value: dataArray[i],
+      color: rcolor,
+      highlight: shadeColor(rcolor, 0.3)
+    });
+  }
+  new Chart(ctx).Pie(chartData);
+}
+
 function percentageCompleteHandler(){
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
@@ -97,6 +142,7 @@ function percentageCompleteHandler(){
   objectKeyExtraction();
   renderPercentageCompleteChart();
   renderIndividualBarChart();
+  renderIndividualPieChart();
 }
 
 function buildTables(dataArray,headerArray,buildLocation,title) {
