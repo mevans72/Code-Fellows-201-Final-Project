@@ -118,13 +118,13 @@ function renderPercentageCompleteChart() {
   var ctx = canvas.getContext('2d');
   var chartData = [{
     value: numOfQuestionsAnswerd,
-    color: '#00FF00',
-    highlight: '#44FF44',
+    color: '#69BE28',
+    highlight: '#457E1A',
     label: 'Questions Answered'
   }, {
     value: numOfTotalQuestions - numOfQuestionsAnswerd,
-    color: '#FF0000',
-    highlight: '#FF4444',
+    color: '#002C5F',
+    highlight: '#002244',
     label: 'Remaining Questions'
   }];
   new Chart(ctx).Pie(chartData);
@@ -137,11 +137,11 @@ function renderIndividualBarChart() {
     labels: keyArray,
     datasets: [{
       label: 'My dataset',
-      fillColor: 'rgba(151,187,205,0.5)',
-      strokeColor: 'rgba(151,187,205,0.8)',
-      highlightFill: 'rgba(151,187,205,0.75)',
-      highlightStroke: 'rgba(151,187,205,1)',
-      data: keyArray
+      fillColor: '#69BE28',
+      strokeColor: '#002244',
+      highlightFill: '#457E1A',
+      highlightStroke: '#002C5F',
+      data: keyValueArray
     }]
   };
   new Chart(ctx).Bar(chartData);
@@ -157,7 +157,7 @@ function renderIndividualPieChart() {
     var rcolor = getRandomColor();
     chartData.push({
       label: keyArray[i],
-      value: keyArray[i],
+      value: keyValueArray[i],
       color: rcolor,
       highlight: shadeColor(rcolor, 0.3)
     });
@@ -170,10 +170,12 @@ function percentageCompleteHandler(){
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
   calcPercentageComplete();
+  securityScoresObjectKeyValueExtraction();
   objectKeyExtraction();
   renderPercentageCompleteChart();
   renderIndividualBarChart();
   renderIndividualPieChart();
+  renderIndividualPolarChart();
   console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
 }
 
@@ -225,13 +227,17 @@ storedData.addEventListener('change', percentageCompleteHandler);
 //   }
 // }
 
-function destroyExistingPolarChart() {
-  if (polarChart != null) {
-    PolarChart.destroy();
-  }
-}
+// function destroyExistingPolarChart() {
+//   if (polarChart != null) {
+//     PolarChart.destroy();
+//   }
+// }
 
-function buildSansCriticalControlsPolarChart() {
+function renderIndividualPolarChart() {
+  var canvas = recreateCanvas('buildSansCriticalControlsPolarChartHere', '400', '400');
+  var polarChart = canvas.getContext('2d');
+
+
   var polarData = [
     {
       value: highSeaSecScore,
@@ -276,8 +282,10 @@ function buildSansCriticalControlsPolarChart() {
     onAnimationComplete : null
   };
 
-  var sansCriticalControlsPolarChart = document.getElementById('buildSansCriticalControlsPolarChartHere').getContext('2d');
-  polarChart = new Chart(sansCriticalControlsPolarChart).PolarArea(polarData);
+  new Chart(polarChart).PolarArea(polarData);
+
+  // var sansCriticalControlsPolarChart = document.getElementById('buildSansCriticalControlsPolarChartHere').getContext('2d');
+  // polarChart = new Chart(sansCriticalControlsPolarChart).PolarArea(polarData);
 }
 
 // function buildSansCriticalControlsBarChart() {
