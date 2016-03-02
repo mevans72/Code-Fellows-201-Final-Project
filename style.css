@@ -5,6 +5,7 @@ body {
 }
 
 /*Nav bar*/
+
 .nav-bar-top {
   padding-left: 10px;
   display: flex;
@@ -15,6 +16,7 @@ body {
 }
 
 /*nav bar elements are spread out*/
+
 .nav {
   margin: 10px;
 }
@@ -28,26 +30,29 @@ a:hover {
 a:visited {
   color: #818A8F;
 }
+
 /*centers the footer*/
+
 footer {
+  display: flex;
   background: #002C5F;
-  width: 100%;
   height: 50px;
-  /*justify-content: center;
-  flex-direction: row;
-  align-items: flex-end;*/
   position: absolute;
-  top: 500px;
+  top: 600px;
   text-align: center;
   margin: auto;
   color: white;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
 }
-footer h3{
+footer h3 {
   font-size: 18px;
   padding-bottom: 10px;
 }
 
 /*left side bar*/
+
 .toggle-graphs {
   width: 8.5%;
   border: 1px solid black;
@@ -60,6 +65,7 @@ footer h3{
 }
 
 /*individual pictures on the left side bar*/
+
 .graphoptions {
   margin: 20px;
   font-size: 10px;
@@ -68,34 +74,46 @@ footer h3{
   margin-left: 2px;
   padding-top: 30px;
 }
-
 .home-top-section {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   top: 35px;
   height: 300px;
   background-color: #818A8F;
-  }
+}
 .home-top-section img {
-  width: 25%;
-  height: 50%;
-  position: relative;
-  top: 50px;
-  left: 150px;
+  width: 50%;
+  height: 100%;
+  /*position: relative;*/
+  top: 0px;
+  left: 0px;
 }
 .dashboard-description {
-  position: relative;
+  /*position: relative;*/
   top: 50px;
   left: 500px;
+  margin-left: 10%;
+  margin-top: 2%;
 }
-
-.dashboard-description h1{
-  padding-bottom: 10px;
+.dashboard-description h1 {
+  padding-bottom: 5px;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 36px;
 }
-.dashboard-description p{
+.dashboard-description p {
   width: 400px;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+}
+li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  margin-right: 100px;
+  margin-left: 150px;
 }
