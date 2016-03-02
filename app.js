@@ -22,6 +22,21 @@ function dataSelected(event) {
   // console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
 }
 
+function checkLocalStorageExistance(){
+  if(window.localStorage.length !== 0) {
+    var storedAnswersData = localStorage.getItem('answers');
+    var answersData = JSON.parse(storedAnswersData);
+    var answers = answersData;
+    console.log(answersData);
+  }
+}
+
+function updateLocalStorage (){
+  var storedAnswersData = JSON.stringify(answers);
+  localStorage.setItem('answers',storedAnswersData);
+  console.log('Local storage has been updated.');
+}
+
 function objectKeyExtraction() {
   //keyArray = [];
   keyArray = Object.keys(answers);
@@ -176,6 +191,8 @@ function percentageCompleteHandler(){
   renderIndividualBarChart();
   renderIndividualPieChart();
   renderIndividualPolarChart();
+  updateLocalStorage();
+  checkLocalStorageExistance();
   console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
 }
 
