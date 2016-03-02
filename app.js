@@ -134,7 +134,8 @@ function renderIndividualPieChart() {
       highlight: shadeColor(rcolor, 0.3)
     });
   }
-  new Chart(ctx).Pie(chartData);
+  new Chart(ctx).PolarArea(chartData);
+
 }
 
 function percentageCompleteHandler(){
