@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>About US</title>
   <link href="reset.css" rel="stylesheet" type="css/text">
-  <link href="style.css" type="css/text" rel="stylesheet">
+  <link href="style1.css" type="css/text" rel="stylesheet">
 </head>
 
 <body>
@@ -24,26 +24,60 @@
       </ul>
     </nav>
   </header>
-  <section class="about-top">
-    <img src="assets/img/mistynguyenprofile.jpg" alt="">
-    <h1>About The Team</h1>
-    <ul>
-      <li>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </li>
-      <li>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </li>
-      <li>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </li>
-    </ul>
-  </section>
+
+<section class="header">
+  <h1>About The Team</h1>
+</section>
+
+  <div class="AboutImageContainer">
+    <section class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <article class="flipper">
+        <div class="front">
+          <img src="assets/img/mikeEvansProfileFlip.jpg" alt="MikeSign">
+        </div>
+        <div class="back">
+          <img src="assets/img/mikeEvansProfile.png" alt="MikeProfilePic">
+        </div>
+      </article>
+    </section>
+
+    <section class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <article class="flipper">
+        <div class="front">
+          <img src="assets/img/mistyscully.jpg" alt="MistySkully">
+        </div>
+        <div class="back">
+          <img src="assets/img/mistynguyenprofile.jpg" alt="MistyProfilePic">
+        </div>
+      </article>
+    </section>
+
+    <section class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <article class="flipper">
+        <div class="front">
+          <img src="assets/img/Deadpool.jpg" alt="Deadpool image">
+        </div>
+        <div class="back">
+          <img src="assets/img/BenNolanProfile.jpg" alt="Ben Nolan profile">
+        </div>
+      </article>
+    </section>
+
+    <section class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <article class="flipper">
+        <div class="front">
+          <img src="assets/img/nolanProfileFlip.jpg" alt="NolanBabyPic">
+        </div>
+        <div class="back">
+          <img src="assets/img/nolanProfilePic.jpg" alt="NolanProfilePic">
+        </div>
+      </article>
+    </section>
+  </div>
 
   <section class="about-bottom">
     <article class=about-article-one>
-      <img src="assets/img/mistynguyenprofile.jpg" alt="">
-      <img src="assets/img/mistyscully.jpg" alt="">
+
       <h1>Misty Madonna Nguyen</h1>
       <ul>
         <li>
@@ -57,9 +91,12 @@
         </li>
       </ul>
     </article>
+  </section>
+
+
+
+  <section>
     <article class=about-article-two>
-      <img src="assets/img/mikeEvansProfile.png" alt="">
-      <img src="assets/img/mikeEvansProfileFlip.jpg" alt="">
       <h1>Mike Evans</h1>
       <ul>
         <li>
@@ -73,11 +110,12 @@
         </li>
       </ul>
     </article>
+  </section>
+
+  <section>
     <article class=about-article-three>
       <!--image of person required here-->
       <!--second image of for hover state-->
-      <img src="assets/img/BenNolanProfile.jpg" alt="Ben Nolan profile">
-      <img src="assets/img/Deadpool.jpg" alt="Deadpool image">
       <h1>Ben Nolan</h1></h1>
       <ul>
         <li>
@@ -91,11 +129,12 @@
         </li>
       </ul>
     </article>
+  </section>
+
+  <section>
     <article class=about-article-four>
       <!--image of person required here-->
       <!--second image of for hover state-->
-      <img src="assets/img/nolanProfilePic.jpg" alt="">
-      <img src="assets/img/nolanProfileFlip.jpg" alt="">
       <h1>Nolan Arendt</h1>
       <ul>
         <li>
@@ -113,8 +152,7 @@
 
   <footer>
     <h3>Seattle, WA</h3>
-    <p><a href="social media links">Follow Us</a> |
-      <a href="about-us.html">About Us</a></p>
+    <p><a href="social media links">Follow Us</a> | <a href="about-us.html">About Us</a></p>
   </footer>
 
 </body>
