@@ -15,13 +15,6 @@ var highSeaSecScore = 0;
 var midSeaSecScore = 0;
 var lowSeaSecScore = 0;
 
-
-function dataSelected(event) {
-  var objKey = event.target.id;
-  answers[objKey] = event.target.value;
-  // console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
-}
-
 function checkLocalStorageExistance(){
   if(localStorage.answers) {
     var storedAnswersData = localStorage.getItem('answers');
@@ -37,6 +30,11 @@ function updateLocalStorage (){
   console.log('Local storage has been updated.');
 }
 
+function dataSelected(event) {
+  var objKey = event.target.id;
+  answers[objKey] = event.target.value;
+  // console.log('The KEY '' + event.target.id + '' was updated with a VALUE of '' + event.target.value + ''');
+}
 function objectKeyExtraction() {
   //keyArray = [];
   keyArray = Object.keys(answers);
@@ -99,37 +97,6 @@ function calcPercentageComplete() {
   // console.log('The percentage of questionaire completed is: ' + percentageComplete);
 }
 
-function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
-  var tableLocation = document.getElementById(buildLocation);
-  var h3 = document.createElement('h3');
-  h3.textContent = title;
-  var table = document.createElement('table');
-  var trEL = document.createElement('tr');
-
-  if (tableLocation) {
-    tableLocation.appendChild(h3);
-    tableLocation.appendChild(table);
-  }
-  table.appendChild(trEL);
-
-  //Build the table headers
-  for (var i = 0; i < headerArray.length; i++) {
-    var thEL = document.createElement('th');
-    thEL.textContent = headerArray[i];
-    trEL.appendChild(thEL);
-  }
-  //Build the table rows
-  for (var i = 0; i < tableHeaderArray.length; i++) {
-    var trEL = document.createElement('tr');
-    table.appendChild(trEL);
-    for (var j = 0; j < tableHeaderArray[i].length; j++) {
-      var tdEl = document.createElement('td');
-      tdEl.textContent = tableHeaderArray[i][j];
-      trEL.appendChild(tdEl);
-    }
-  }
-}
-
 function getRandomColor() {
   var letters = '0123456789ABCDEF'.split('');
   var color = '#';
@@ -177,7 +144,7 @@ function renderPercentageCompleteChart() {
 }
 
 function renderIndividualBarChart() {
-  var canvas = recreateCanvas('individualBarChart', '550', '400');
+  var canvas = recreateCanvas('individualBarChart', '400', '400');
   var ctx = canvas.getContext('2d');
   var chartData = {
     labels: keyArray,
@@ -196,7 +163,7 @@ function renderIndividualBarChart() {
 // The data used in the 2nd chart (individualBarChart) and
 //  3rd chart (individualPieChart) is the same as instructed
 function renderIndividualPieChart() {
-  var canvas = recreateCanvas('individualPieChart', '550', '400');
+  var canvas = recreateCanvas('individualPieChart', '400', '400');
   var ctx = canvas.getContext('2d');
   var chartData = [];
   for (var i = 0; i < keyArray.length; i++) {
@@ -232,8 +199,8 @@ function renderIndividualPolarChart() {
     },
     {
       value: lowSeaSecScore,
-      color: '#213D5A',
-      highlight: '#081F2C',
+      color: '#85cae5',
+      highlight: '#213D5A',
       label: 'LOW'
     }
   ];
@@ -264,48 +231,116 @@ function renderIndividualPolarChart() {
   new Chart(polarChart).PolarArea(polarData);
 }
 
-function percentageCompleteHandler(){
+function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
+  var tableLocation = document.getElementById(buildLocation);
+  var h3 = document.createElement('h3');
+  h3.textContent = title;
+  var table = document.createElement('table');
+  var trEL = document.createElement('tr');
+
+  if (tableLocation) {
+    tableLocation.appendChild(h3);
+    tableLocation.appendChild(table);
+  }
+  table.appendChild(trEL);
+
+  //Build the table headers
+  for (var i = 0; i < recomendationsHeaderArray.length; i++) {
+    var thEL = document.createElement('th');
+    thEL.textContent = recomendationsHeaderArray[i];
+    trEL.appendChild(thEL);
+  }
+  //Build the table rows
+  for (var i = 0; i < tableDataArray.length; i++) {
+    var trEL = document.createElement('tr');
+    table.appendChild(trEL);
+    for (var j = 0; j < tableDataArray[i].length; j++) {
+      var tdEl = document.createElement('td');
+      tdEl.textContent = tableDataArray[i][j];
+      trEL.appendChild(tdEl);
+    }
+  }
+}
+
+function checksOnNewPageRunDashboard() {
+  if(document.getElementById('dashboard')){
+    //Check for and retrieve local storage
+    checkLocalStorageExistance();
+    //Calc and extract data
+    countNumOfTotalQuestions();
+    countNumOfQuestionsAnswerd();
+    calcPercentageComplete();
+    securityScoresObjectKeyValueExtraction();
+    objectKeyExtraction();
+    //Render all four charts
+    renderPercentageCompleteChart();
+    renderIndividualBarChart();
+    renderIndividualPieChart();
+    renderIndividualPolarChart();
+  }
+}
+
+function checksOnNewPageRunQuestionnaire() {
+  if(document.getElementById('questionnaire')) {
+    //Checn for and retrieve local storage
+    checkLocalStorageExistance();
+    //Calc and extract data
+    countNumOfTotalQuestions();
+    countNumOfQuestionsAnswerd();
+    calcPercentageComplete();
+    securityScoresObjectKeyValueExtraction();
+    objectKeyExtraction();
+    //Render percentage and polar sea-sec-score charts
+    renderPercentageCompleteChart();
+    renderIndividualPolarChart();
+  }
+}
+
+function checksOnNewPageRunRecommendations() {
+  if(document.getElementById('recommendations')){
+    if(document.getElementById('buildRecommendationTableHere')){
+      buildTables(recomendationsArray,recomendationsHeaderArray,'buildRecommendationTableHere','SANS Cricital Conrtols Recommendations');
+    }
+    if(document.getElementById('storedData')){
+      //Calc and extract data
+      checkLocalStorageExistance();
+      //Calc and extract data
+      countNumOfTotalQuestions();
+      countNumOfQuestionsAnswerd();
+      calcPercentageComplete();
+      securityScoresObjectKeyValueExtraction();
+      objectKeyExtraction();
+      //Render polar sea-sec-score and pie charts
+      renderIndividualPolarChart();
+      renderIndividualPieChart();
+    }
+  }
+}
+
+function dataSelectedHandler(){
+  //Calc and extract data
+  dataSelected(event);
   countNumOfTotalQuestions();
   countNumOfQuestionsAnswerd();
   calcPercentageComplete();
   securityScoresObjectKeyValueExtraction();
   objectKeyExtraction();
+  //Update local storage
   updateLocalStorage();
+  //Render polar sea-sec-score and pie charts
   renderPercentageCompleteChart();
-  renderIndividualBarChart();
-  renderIndividualPieChart();
   renderIndividualPolarChart();
   // console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
 }
 
-storedData.addEventListener('change',dataSelected);
-storedData.addEventListener('change',percentageCompleteHandler);
-
-function checksOnNewPageRunDashboard() {
-  checkLocalStorageExistance();
-  countNumOfTotalQuestions();
-  countNumOfQuestionsAnswerd();
-  calcPercentageComplete();
-  securityScoresObjectKeyValueExtraction();
-  objectKeyExtraction();
-  renderPercentageCompleteChart();
-  renderIndividualBarChart();
-  renderIndividualPieChart();
-  renderIndividualPolarChart();
+//Eventlistenr to update some data
+// storedData.addEventListener('change',dataSelected);
+//Eventlistenr to update questionnaire page
+if(document.getElementById('questionnaire')) {
+  storedData.addEventListener('change',dataSelectedHandler);
+  console.log('The \'checksOnNewPageRunQuestionnaire\' event listener ran.');
 }
-checksOnNewPageRunDashboard();
 
-function checksOnNewPageRunQuestionnaire() {
-  checkLocalStorageExistance();
-  countNumOfTotalQuestions();
-  countNumOfQuestionsAnswerd();
-  calcPercentageComplete();
-  securityScoresObjectKeyValueExtraction();
-  objectKeyExtraction();
-}
 checksOnNewPageRunQuestionnaire();
-
-
-if(document.getElementById('buildRecommendationTableHere')){
-  buildTables(recomendationsArray,recomendationsHeaderArray,'buildRecommendationTableHere','SANS Cricital Conrtols Recommendations');
-}
+checksOnNewPageRunRecommendations();
+checksOnNewPageRunDashboard();

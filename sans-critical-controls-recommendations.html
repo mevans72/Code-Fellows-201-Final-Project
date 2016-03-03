@@ -11,45 +11,53 @@
   </script>
 </head>
 
-<body>
-  <section>
+<body id="recommendations">
+  <nav>
+    <ul class="nav-bar-top">
+      <li class="nav">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="nav">
+        <a href="dashboard.html">Dashboard</a>
+      </li>
+      <li class="nav">
+        <a href="sans-critical-controls.html">Questionnaire</a>
+      </li>
+    </ul>
+  </nav>
 
-    <header>Recommendations Page</header>
-
-    <nav>
-      <div class="nav">
-        <div cass="container">
-          <ul class="pull-left">
-            <li><a href="#home">Home</a></li>
-            <link type="home" rel="home" href="index.html" />
-            <li><a href="#dashboard">Dashboard</a></li>
-            <link type="dashboard" rel="dashboard" href="dashboard.html" />
-            <li><a href="#questionnaire">Questionnaire</a></li>
-            <link type="questionnaire" rel="questionnaire" href="sans-critical-controls.html" />
-          </ul>
-    </nav>
+  <header class="recommendations-header">
+    <img src="assets/img/spaceneedle.jpg" alt="Space Needle">
+    <h1>SANS Critical Controls Audit</h1>
+    <ul>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </li>
+    </ul>
+  </header>
 
     <aside>
       <section>
         <a id="storedData"></a>
+        <a id="chartContainer"></a>
+        <!-- <a id="storedData"></a> -->
       </section>
     </aside>
 
-    <h1>Recommendations</h1>
-    <section id="buildRecommendationTableHere"></section>
+    <!-- Recomendations Table Built Here -->
 
-  </section>
-  &nbsp;
+    <section id="buildRecommendationTableHere" class="recommendations-mid">
+    </section>
+
   <footer>
     <p> Seattle, WA
     </p>
     <a href="social media links">Follow Us</a>
     <a href="about-us.html">About Us</a>
   </footer>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
-
-  <script src="sample-data-testing.js"></script>
 </body>
 
 </html>
