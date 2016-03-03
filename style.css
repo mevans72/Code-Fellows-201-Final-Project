@@ -38,7 +38,7 @@ footer {
   background: #002C5F;
   height: 50px;
   position: absolute;
-  top: 600px;
+  top: 800px;
   text-align: center;
   margin: auto;
   color: white;
@@ -113,7 +113,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 70px;
   margin-right: 100px;
-  margin-left: 150px;
+  margin-left: 70px;
 }
