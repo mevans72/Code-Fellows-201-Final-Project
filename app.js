@@ -23,10 +23,10 @@ function dataSelected(event) {
 }
 
 function checkLocalStorageExistance(){
-  if(window.localStorage.length !== 0) {
+  if(localStorage.answers) {
     var storedAnswersData = localStorage.getItem('answers');
     var answersData = JSON.parse(storedAnswersData);
-    var answers = answersData;
+    answers = answersData;
     console.log(answersData);
   }
 }
@@ -97,6 +97,37 @@ function calcPercentageComplete() {
   percentageComplete = numOfQuestionsAnswerd / numOfTotalQuestions;
   percentageNotComplete = 1 - percentageComplete;
   // console.log('The percentage of questionaire completed is: ' + percentageComplete);
+}
+
+function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
+  var tableLocation = document.getElementById(buildLocation);
+  var h3 = document.createElement('h3');
+  h3.textContent = title;
+  var table = document.createElement('table');
+  var trEL = document.createElement('tr');
+
+  if (tableLocation) {
+    tableLocation.appendChild(h3);
+    tableLocation.appendChild(table);
+  }
+  table.appendChild(trEL);
+
+  //Build the table headers
+  for (var i = 0; i < headerArray.length; i++) {
+    var thEL = document.createElement('th');
+    thEL.textContent = headerArray[i];
+    trEL.appendChild(thEL);
+  }
+  //Build the table rows
+  for (var i = 0; i < tableHeaderArray.length; i++) {
+    var trEL = document.createElement('tr');
+    table.appendChild(trEL);
+    for (var j = 0; j < tableHeaderArray[i].length; j++) {
+      var tdEl = document.createElement('td');
+      tdEl.textContent = tableHeaderArray[i][j];
+      trEL.appendChild(tdEl);
+    }
+  }
 }
 
 function getRandomColor() {
@@ -181,72 +212,6 @@ function renderIndividualPieChart() {
 
 }
 
-function percentageCompleteHandler(){
-  countNumOfTotalQuestions();
-  countNumOfQuestionsAnswerd();
-  calcPercentageComplete();
-  securityScoresObjectKeyValueExtraction();
-  objectKeyExtraction();
-  renderPercentageCompleteChart();
-  renderIndividualBarChart();
-  renderIndividualPieChart();
-  renderIndividualPolarChart();
-  updateLocalStorage();
-  checkLocalStorageExistance();
-  console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
-}
-
-function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
-  //Declare table location, table title, and begin building the initial table element
-  var tableLocation = document.getElementById(buildLocation);
-  var h3 = document.createElement('h3');
-  h3.textContent = title;
-  var table = document.createElement('table');
-  var trEL = document.createElement('tr');
-
-  if (tableLocation) {
-    tableLocation.appendChild(h3);
-    tableLocation.appendChild(table);
-  }
-  table.appendChild(trEL);
-
-  //Build the table headers
-  for (var i = 0; i < headerArray.length; i++) {
-    var thEL = document.createElement('th');
-    thEL.textContent = headerArray[i];
-    trEL.appendChild(thEL);
-  }
-  //Build the table rows
-  for (var i = 0; i < tableHeaderArray.length; i++) {
-    var trEL = document.createElement('tr');
-    table.appendChild(trEL);
-    for (var j = 0; j < tableHeaderArray[i].length; j++) {
-      var tdEl = document.createElement('td');
-      tdEl.textContent = tableHeaderArray[i][j];
-      trEL.appendChild(tdEl);
-    }
-  }
-}
-
-//buildTables(recomendationsArray,recomendationsHeaderArray,'listOfResultsId','SANS Cricital Conrtols Recommendations');
-// function destroyExistingBarChart() {
-//   if (barChart != null) {
-//     barChart.destroy();
-//   }
-// }
-
-// function destroyExistingPieChart() {
-//   if (PieChart != null) {
-//     PieChart.destroy();
-//   }
-// }
-
-// function destroyExistingPolarChart() {
-//   if (polarChart != null) {
-//     PolarChart.destroy();
-//   }
-// }
-
 function renderIndividualPolarChart() {
   var canvas = recreateCanvas('buildSansCriticalControlsPolarChartHere', '400', '400');
   var polarChart = canvas.getContext('2d');
@@ -256,20 +221,20 @@ function renderIndividualPolarChart() {
     {
       value: highSeaSecScore,
       color:'#69BE28',
-      highlight: '#002244',
-      label: 'Exceeding Expectations'
+      highlight: '#457E1A',
+      label: 'High'
     },
     {
       value: midSeaSecScore,
-      color: '#A5ACAF',
+      color: '#002C5F',
       highlight: '#002244',
-      label: 'Meets Expectations'
+      label: 'MID'
     },
     {
       value: lowSeaSecScore,
-      color: '#002C5F',
-      highlight: '#002244',
-      label: 'Below Expectations'
+      color: '#213D5A',
+      highlight: '#081F2C',
+      label: 'LOW'
     }
   ];
 
@@ -297,50 +262,49 @@ function renderIndividualPolarChart() {
   };
 
   new Chart(polarChart).PolarArea(polarData);
-
-  // var sansCriticalControlsPolarChart = document.getElementById('buildSansCriticalControlsPolarChartHere').getContext('2d');
-  // polarChart = new Chart(sansCriticalControlsPolarChart).PolarArea(polarData);
 }
 
-// function buildSansCriticalControlsBarChart() {
-//   destroyExistingBarChart();
-//   // objectKeyValueExtraction();
-//   var barData = {
-//     labels: sansCriticalControlsBarChartLabelsArray,
-//     datasets: [{
-//       fillColor: '#002C5F',
-//       strokeColor: '#69BE28',
-//       data: keyValueArray
-//     }]
-//   };
-//   var sansCriticalControlsBarChart = document.getElementById('buildSansCriticalControlsBarChartHere').getContext('2d');
-//   barChart = new Chart(sansCriticalControlsBarChart).Bar(barData);
-// }
-
-// function buildPercentagePieChart() {
-//   destroyExistingPieChart();
-//   // objectKeyValueExtraction();
-//   var pieData = [{
-//     value: percentageComplete,
-//     color: '#002C5F'
-//   },
-//     {
-//       value: percentageNotComplete,
-//       color: '#69BE28'
-//     }
-//   ];
-//
-//   var pieOptions = {
-//     segmentShowStroke : false,
-//     animateScale : true
-//   };
-//
-//   var sansPercentagePieChartHere = document.getElementById('buildPercentagePieChartHere').getContext('2d');
-//   pieChart = new Chart(sansPercentagePieChartHere).Pie(pieData, pieOptions);
-// }
+function percentageCompleteHandler(){
+  countNumOfTotalQuestions();
+  countNumOfQuestionsAnswerd();
+  calcPercentageComplete();
+  securityScoresObjectKeyValueExtraction();
+  objectKeyExtraction();
+  updateLocalStorage();
+  renderPercentageCompleteChart();
+  renderIndividualBarChart();
+  renderIndividualPieChart();
+  renderIndividualPolarChart();
+  // console.log('The KEY "' + event.target.id + '" was updated with a VALUE of "' + event.target.value + '"');
+}
 
 storedData.addEventListener('change',dataSelected);
 storedData.addEventListener('change',percentageCompleteHandler);
+
+function checksOnNewPageRunDashboard() {
+  checkLocalStorageExistance();
+  countNumOfTotalQuestions();
+  countNumOfQuestionsAnswerd();
+  calcPercentageComplete();
+  securityScoresObjectKeyValueExtraction();
+  objectKeyExtraction();
+  renderPercentageCompleteChart();
+  renderIndividualBarChart();
+  renderIndividualPieChart();
+  renderIndividualPolarChart();
+}
+checksOnNewPageRunDashboard();
+
+function checksOnNewPageRunQuestionnaire() {
+  checkLocalStorageExistance();
+  countNumOfTotalQuestions();
+  countNumOfQuestionsAnswerd();
+  calcPercentageComplete();
+  securityScoresObjectKeyValueExtraction();
+  objectKeyExtraction();
+}
+checksOnNewPageRunQuestionnaire();
+
 
 if(document.getElementById('buildRecommendationTableHere')){
   buildTables(recomendationsArray,recomendationsHeaderArray,'buildRecommendationTableHere','SANS Cricital Conrtols Recommendations');
