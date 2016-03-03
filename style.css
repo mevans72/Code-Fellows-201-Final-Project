@@ -32,6 +32,11 @@ a:visited {
 header {
   display: inline;
   background: #818A8F;
+  padding-top: 20px;
+}
+header strong {
+  font-weight: bold;
+  font-size: 26px;
 }
 div {
   display: flex;
@@ -40,20 +45,37 @@ header img {
   height: 100%;
   width: 50%;
 }
+section {
+  display: flex;
+  margin-left: 150px;
+
+
+}
 section figure {
-  display: inline;
+justify-content: space-around;
+flex-direction: row;
+margin-right: 100px;
+padding-top: 20px;
+
+}
+section figure figcaption {
+width: 250px;
+
 }
 
-/*footer {
+header p {
+  padding-top: 20px;
+}
+footer {
   display: flex;
   flex-direction: column;
   background: #002C5F ;
   height: 50px;
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0px;
   left: 0px;
   text-align: center;
-  margin: auto;
+  margin: 20px auto auto auto;
   color: white;
   width: 100%;
 }
@@ -62,4 +84,4 @@ footer h3 {
   justify-content: center;
   font-size: 18px;
   padding-bottom: 10px;
-}*/
+}
