@@ -127,7 +127,7 @@ function recreateCanvas(id, width, height) {
 }
 
 function renderPercentageCompleteChart() {
-  var canvas = recreateCanvas('percentageChart', '400', '400');
+  var canvas = recreateCanvas('percentageChart', '300', '300');
   var ctx = canvas.getContext('2d');
   var chartData = [{
     value: numOfQuestionsAnswerd,
@@ -144,7 +144,7 @@ function renderPercentageCompleteChart() {
 }
 
 function renderIndividualBarChart() {
-  var canvas = recreateCanvas('individualBarChart', '400', '400');
+  var canvas = recreateCanvas('individualBarChart', '300', '300');
   var ctx = canvas.getContext('2d');
   var chartData = {
     labels: keyArray,
@@ -163,7 +163,7 @@ function renderIndividualBarChart() {
 // The data used in the 2nd chart (individualBarChart) and
 //  3rd chart (individualPieChart) is the same as instructed
 function renderIndividualPieChart() {
-  var canvas = recreateCanvas('individualPieChart', '400', '400');
+  var canvas = recreateCanvas('individualPieChart', '300', '300');
   var ctx = canvas.getContext('2d');
   var chartData = [];
   for (var i = 0; i < keyArray.length; i++) {
@@ -180,7 +180,7 @@ function renderIndividualPieChart() {
 }
 
 function renderIndividualPolarChart() {
-  var canvas = recreateCanvas('buildSansCriticalControlsPolarChartHere', '400', '400');
+  var canvas = recreateCanvas('buildSansCriticalControlsPolarChartHere', '300', '300');
   var polarChart = canvas.getContext('2d');
 
 
