@@ -64,6 +64,11 @@ header p {
 .recommendations-mid {
   margin: 0px;
 }
+
+#chartContainer {
+  margin-left: 0px;
+  display: block;
+}
 footer {
   display: flex;
   flex-direction: column;
