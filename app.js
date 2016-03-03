@@ -231,15 +231,12 @@ function renderIndividualPolarChart() {
   new Chart(polarChart).PolarArea(polarData);
 }
 
-function buildTables(tableDataArray, tableHeaderArray, buildLocation, title) {
+function buildTables(tableDataArray, tableHeaderArray, buildLocation) {
   var tableLocation = document.getElementById(buildLocation);
-  var h3 = document.createElement('h3');
-  h3.textContent = title;
   var table = document.createElement('table');
   var trEL = document.createElement('tr');
 
   if (tableLocation) {
-    tableLocation.appendChild(h3);
     tableLocation.appendChild(table);
   }
   table.appendChild(trEL);
@@ -299,7 +296,7 @@ function checksOnNewPageRunQuestionnaire() {
 function checksOnNewPageRunRecommendations() {
   if(document.getElementById('recommendations')){
     if(document.getElementById('buildRecommendationTableHere')){
-      buildTables(recomendationsArray,recomendationsHeaderArray,'buildRecommendationTableHere','SANS Cricital Conrtols Recommendations');
+      buildTables(recomendationsArray,recomendationsHeaderArray,'buildRecommendationTableHere');
     }
     if(document.getElementById('storedData')){
       //Calc and extract data
