@@ -41,6 +41,10 @@ header strong {
 div {
   display: flex;
 }
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
 header img {
   height: 100%;
   width: 50%;
@@ -95,7 +99,7 @@ footer h3 {
   padding-bottom: 10px;
 }
 
-.AboutImageContainer {
+/*.AboutImageContainer {
   position: relative;
   top: 100px;
   padding: 50px;
@@ -104,54 +108,47 @@ footer h3 {
   justify-content: center;
   flex-direction: row;
   min-height: 100%;
-}
+}*/
 
 /* Fliping cards */
-.front img, .back img{
+.face img, .back img{
   height: 302px;
-  width: 400px;;
+  width: 400px;
 }
 
 
 .flip-container {
-  padding-left: 20px;
+  position: relative;
+  margin: 10px auto;
+  /*height: 302px;
+  width: 400px;*/
+  z-index: 1;
+}
+.flip-container {
   perspective: 1000;
 }
-/* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-  transform: rotateZ(180deg);
-}
-
-.flip-container, .front, .back {
-	width: 400px;
-	height: 302px;
-}
-
-/* flip speed goes here */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
-
-	position: relative;
+  /*height: 302px;
+  width: 400px;*/
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
 }
-
-/* hide back of pane during swap */
-.front, .back {
-	backface-visibility: hidden;
-
-	position: absolute;
-	top: 0;
-	left: 0;
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+  /*box-shadow: -5px 5px 5px #aaa;*/
 }
-
-/* front pane, placed above back */
-.front {
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+.face {
+  position: absolute;
+  /*height: 302px;
+  width: 400px;*/
+  backface-visibility: hidden;
 }
-
-/* back, initially hidden pane */
-.back {
-	transform: rotateY(180deg);
-}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #aaa;
+}s
