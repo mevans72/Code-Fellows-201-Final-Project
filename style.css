@@ -61,6 +61,9 @@ section figure figcaption {
 header p {
   padding-top: 20px;
 }
+.recommendations-mid {
+  margin: 0px;
+}
 footer {
   display: flex;
   flex-direction: column;
