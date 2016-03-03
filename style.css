@@ -48,28 +48,26 @@ header img {
 section {
   display: flex;
   margin-left: 150px;
-
-
 }
 section figure {
-justify-content: space-around;
-flex-direction: row;
-margin-right: 100px;
-padding-top: 20px;
-
+  justify-content: space-around;
+  flex-direction: row;
+  margin-right: 100px;
+  padding-top: 20px;
 }
 section figure figcaption {
-width: 250px;
-
+  width: 250px;
 }
-
 header p {
   padding-top: 20px;
+}
+.recommendations-mid {
+  margin: 0px;
 }
 footer {
   display: flex;
   flex-direction: column;
-  background: #002C5F ;
+  background: #002C5F;
   height: 50px;
   /*position: absolute;*/
   bottom: 0px;
